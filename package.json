@@ -25,6 +25,8 @@
   "devDependencies": {
       "mocha": "*"
     , "chai": "*"
+    , "mocha-phantomjs": "*"
+
   },
   "author": "",
   "license": "GPL",
