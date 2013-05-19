@@ -1,0 +1,33 @@
+{
+  "name": "jsnes",
+  "version": "0.0.0",
+  "description": "JSNES =====",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/darvin/jsnes.git"
+  },
+  "keywords": [
+    "nes",
+    "nintendo",
+    "dendy",
+    "emulator",
+    "console",
+    "game",
+    "games"
+  ],
+  "devDependencies": {
+      "mocha": "*"
+    , "chai": "*"
+  },
+  "author": "",
+  "license": "GPL",
+  "gitHead": "4e7a7260aaaeb7e1c5f66af66d4f25393839264f",
+  "readmeFilename": "README.md"
+}

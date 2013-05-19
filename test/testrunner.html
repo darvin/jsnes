@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title> Tests </title>
+        <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+    </head>
+    <body>
+        <div id="mocha"></div>
+        <script src="../node_modules/mocha/mocha.js"></script>
+        <script src="../node_modules/chai/chai.js"></script>
+        <script>
+            mocha.ui('bdd');
+            mocha.reporter('html');
+            var should = chai.should();
+        </script>
+        <script src="test_simple.js"></script>
+
+
+
+    
+    <script src="../lib/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../source/nes.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../source/utils.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../source/cpu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../source/keyboard.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../source/mappers.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../source/papu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../source/ppu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../source/rom.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../source/ui.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="base64.js" type="text/javascript" charset="utf-8"></script>
+    <script src="benchmark.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+        <script src="test_benchmark.js"></script>
+        <script>
+            if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+            else { mocha.run(); }
+        </script>
+    </body>
+</html>
+
