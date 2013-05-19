@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/darvin/jsnes.png)](https://travis-ci.org/darvin/jsnes)
+
 JSNES
 =====
 
