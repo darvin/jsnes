@@ -39,7 +39,7 @@ describe("JSNES", function () {
                   }
                   var meanFPS = totalFPS / repeatCount;
                   $("#results").append('<li>Average of 10 runs: '+meanTime.toFixed(2)+'ms</li>');
-                  meanTime.should.be.within(300,2000);
+                  meanTime.should.be.within(300,4000);
                   meanFPS.should.be.within(40,300);
 
                   done();
