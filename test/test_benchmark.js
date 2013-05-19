@@ -1,39 +1,27 @@
-/* Read a file  using xmlhttprequest
+function croomBenchmark() {
+    var i;
+    var nes = new JSNES({
+        emulateSound: true,
+        ui: JSNES.DummyUI
+    });
 
-If the HTML file with your javascript app has been saved to disk,
-this is an easy way to read in a data file.  Writing out is
-more complicated and requires either an ActiveX object (IE)
-or XPCOM (Mozilla).
+    nes.loadRom(getTestRom("croom"));
+    nes.setLimitFrames(false);
+    nes.isRunning = true;
 
-fname - relative path to the file
-callback - function to call with file text
-*/
-function readFileHttp(fname, callback) {
-   xmlhttp = getXmlHttp();
-   xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState==4) {
-          callback(xmlhttp.responseText);
-      }
-   }
-   xmlhttp.open("GET", fname, true);
-   xmlhttp.send(null);
-}
+    for (i=0; i<5; i++) {
+        nes.frame();
+    }
 
-/*
-Return a cross-browser xmlhttp request object
-*/
-function getXmlHttp() {
-   if (window.XMLHttpRequest) {
-      xmlhttp=new XMLHttpRequest();
-   } else if (window.ActiveXObject) {
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-   }
-   if (xmlhttp == null) {
-      alert("Your browser does not support XMLHTTP.");
-   }
-   return xmlhttp;
-}
+    // Hit enter on start screen to start scrolling
+    nes.keyboard.keyDown({keyCode: 13});
+    nes.frame();
+    nes.keyboard.keyUp({keyCode: 13});
 
+    for (i=0; i<94; i++) {
+        nes.frame();
+    }
+};
 
 
 
