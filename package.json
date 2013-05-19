@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha-phantomjs test/testrunner.html"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
@@ -23,13 +23,29 @@
     "games"
   ],
   "devDependencies": {
-      "mocha": "*"
-    , "chai": "*"
-    , "mocha-phantomjs": "*"
-
+    "mocha": "*",
+    "jake": "*",
+    "chai": "*",
+    "mocha-phantomjs": "*",
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-mocha-phantomjs": "~0.2.7"
   },
-  "author": "",
-  "license": "GPL",
+  "author": {
+    "name": "Ben Firshman",
+    "email": "ben@firshman.co.uk",
+    "url": "http://fir.sh"
+  },
+  "licenses": [
+    {
+      "type": "GPL-3",
+      "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+    }
+  ],
+  "homepage": "http://fir.sh/projects/jsnes/",
   "gitHead": "4e7a7260aaaeb7e1c5f66af66d4f25393839264f",
   "readmeFilename": "README.md"
 }
