@@ -33,7 +33,10 @@
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-contrib-jshint": "*",
-    "grunt-mocha-phantomjs": "~0.2.7"
+    "grunt-mocha-phantomjs": "~0.2.7",
+    "walk": "~2.2.1",
+    "findit": "~0.1.2",
+    "mstring": "git://github.com/davidmurdoch/mstring.git"
   },
   "author": {
     "name": "Ben Firshman",

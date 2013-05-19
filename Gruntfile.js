@@ -1,3 +1,7 @@
+
+
+
+
 /*global module:false*/
 module.exports = function(grunt) {
 
@@ -91,6 +95,52 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['concat', 'uglify']);
 
-  grunt.registerTask('test', ['mocha_phantomjs']);
+  grunt.registerTask('test', ['concat', 'build_test_roms', 'mocha_phantomjs']);
+  grunt.registerTask('build_test_roms', 'Creates browser-friendly roms in test/roms files for testing', function() {
+    var done = this.async();
+    grunt.log.writeln('Looking for roms...');
+    var path = require('path'),
+      fs = require('fs'),
+      walker;
+
+    var files = require('findit').sync("./roms");
+    var filesTexts = files.filter(function (file){
+      return (path.extname(file)==".nes");
+    }).map(function (file) {
+      grunt.log.writeln("Found "+file);
+      var romData = fs.readFileSync(file);
+      var base64Rom = new Buffer(romData, 'binary').toString('base64');
+      var romName = path.basename(file, path.extname(file));
+      return "'"+romName+"':'"+base64Rom+"'";
+
+    });
+    var licenseData = fs.readFileSync(path.join("roms", "licenses"));
+    var jsRomsData = filesTexts.join(",\n");
+
+    var M = require('mstring');
+
+    var jsRomsResult = "/*\n"+licenseData+"*/\n" + M(function(){/***
+var getTestRom = (function() {
+  var roms = {
+***/}) +"\n"+ jsRomsData+ "\n"+ M(function(){/***
+}
+  return function(romName) {
+    var rom = roms[romName];
+    // Requires base64.js
+    if (typeof atob === 'undefined') {
+      return Base64.decode(rom);
+    }
+    else {
+      return atob(rom);
+    }
+  };
+})();
+    ***/});
+    fs.writeFileSync(path.join("test","_roms_for_test.js"), jsRomsResult);
+
+    grunt.log.writeln("Done");
+    done();
+
+  });
 
 };
