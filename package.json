@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm test"
+    "test": "mocha-phantomjs test/testrunner.html"
   },
   "repository": {
     "type": "git",
