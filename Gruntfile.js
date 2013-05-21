@@ -85,7 +85,7 @@ module.exports = function(grunt) {
     'gh-pages': {
       options: {
       },
-      src: ['index.html', 'dist/**/*', 'lib/**/*']
+      src: ['index.html', 'dist/**/*', 'lib/**/*', 'roms/**/*.nes']
     },
     bower: {
       install: {
