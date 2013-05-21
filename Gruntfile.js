@@ -81,7 +81,20 @@ module.exports = function(grunt) {
     },
     mocha_phantomjs: {
       all: ['test/**/*.html']
-    }
+    },
+    'gh-pages': {
+      options: {
+      },
+      src: ['index.html', 'dist/**/*', 'lib/**/*']
+    },
+    bower: {
+      install: {
+         cleanBowerDir: true,
+
+        //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
+      }
+    },
+
 
   });
 
@@ -91,11 +104,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-phantomjs');
-
+  grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.loadNpmTasks('grunt-bower-task');
+  grunt.registerTask('build', ['bower', 'concat', 'uglify']);
   // Default task.
-  grunt.registerTask('default', ['concat', 'uglify']);
+  grunt.registerTask('default', ['build']);
 
-  grunt.registerTask('test', ['concat', 'build_test_roms', 'mocha_phantomjs']);
+  grunt.registerTask('test', ['build', 'build_test_roms', 'mocha_phantomjs']);
+  grunt.registerTask('test:only', ['mocha_phantomjs']);
+  grunt.registerTask('release', ['build', 'test', 'gh-pages']);
   grunt.registerTask('build_test_roms', 'Creates browser-friendly roms in test/roms files for testing', function() {
     var done = this.async();
     grunt.log.writeln('Looking for roms...');

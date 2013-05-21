@@ -1,0 +1,16 @@
+{
+  "name": "jsnes",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "~2.0.0",
+    "peerjs": "~0.2.5"
+  },
+  "exportsOverride": {
+    "peerjs": {
+      "js": "dist/*.js"
+    },
+    "jquery": {
+      "js": ["jquery.js", "jquery.min.js"]
+    }
+  }
+}
